@@ -68,9 +68,18 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for (key of keys) {
-            if (req.body[key] == "") {
+            if (req.body[key] == "" && key != "removed_files") {
                 return res.send('Por favor, preencha todos os campos!')
             }
+        }
+
+        if (req.body.removed_files) {
+            const removedFiles = req.body.removed_files.split(",")
+            removedFiles.pop()
+
+            const removedFilesPromise = removedFiles.map(id => File.delete(id))
+
+            await Promise.all(removedFilesPromise)
         }
 
         req.body.price = req.body.price.replace(/\D/g, "")
