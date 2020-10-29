@@ -29,8 +29,6 @@ module.exports = {
             data.status || 1
         ]
 
-        console.log(values)
-
         return db.query(query, values)
     },
 
