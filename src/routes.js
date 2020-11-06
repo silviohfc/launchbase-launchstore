@@ -4,7 +4,7 @@ const multer = require('./app/middlewares/multer')
 
 const ProductController = require('./app/controllers/ProductController')
 const HomeController = require('./app/controllers/HomeController')
-const SearchController = require('./app/controllers/HomeController')
+const SearchController = require('./app/controllers/SearchController')
 
 /* ---------------------------------- HOME ---------------------------------- */
 routes.get("/", HomeController.index)
